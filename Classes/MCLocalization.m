@@ -112,20 +112,17 @@
 {
     NSString * sanitizedLanguage = [self sanitizeLanguage:language];
     
-    // Skip if the new setting is the same as the old one
-    if (![sanitizedLanguage isEqualToString:_language]) {
-        // Check if new setting is supported by localization
-        if ([self.supportedLanguages indexOfObject:sanitizedLanguage] != NSNotFound) {
-            _language = [sanitizedLanguage copy];
-        } else {
-            _language = nil;
-        }
-        
-        [self reloadStrings];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:_language forKey:MCLOCALIZATION_PREFERRED_LOCALE_KEY];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    // Check if new setting is supported by localization
+    if ([self.supportedLanguages indexOfObject:sanitizedLanguage] != NSNotFound) {
+        _language = [sanitizedLanguage copy];
+    } else {
+        _language = nil;
     }
+    
+    [self reloadStrings];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_language forKey:MCLOCALIZATION_PREFERRED_LOCALE_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Strings
