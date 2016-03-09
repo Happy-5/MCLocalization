@@ -175,7 +175,11 @@
 
 - (NSString *)stringForKey:(NSString *)key
 {
-    return [self stringForKey:key language:self.language];
+    NSString *result = [self stringForKey:key language:self.language];
+    
+    if (!result) result = key;
+    
+    return result;
 }
 
 + (NSString *)stringForKey:(NSString *)key
