@@ -165,9 +165,6 @@
             string = [string stringByReplacingOccurrencesOfString:@"{key}" withString:key];
             string = [string stringByReplacingOccurrencesOfString:@"{language}" withString:language];
         }
-#if DEBUG
-        NSLog(@"MCLocalization: no string for key %@ in language %@", key, language);
-#endif
     }
 
     return string;
