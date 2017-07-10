@@ -14,7 +14,7 @@
 #define MCLOCALIZATION_PREFERRED_LOCALE_KEY @"MCLOCALIZATION_PREFERRED_LOCALE_KEY"
 
 @interface MCLocalization ()
-
+@property (nonatomic, strong) NSDictionary *fallbackDictionary;
 @end
 
 @implementation MCLocalization {
@@ -45,6 +45,14 @@
     
     if (self) {
         self.dataSource = [MCLocalizationDummyDataSource new];
+
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"localization_default_string" ofType:@"json"];
+        if (path) {
+            NSData *data = [NSData dataWithContentsOfFile:path];
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:  kNilOptions error:nil];
+
+            self.fallbackDictionary = json;
+        }
     }
     
     return self;
@@ -167,23 +175,18 @@
     NSString *result = [self stringForKey:key language:self.language];
     
     if (!result) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"localization_default_string" ofType:@"json"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        if (data) {
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:  kNilOptions error:nil];
-            NSString *value = json[key];
-
-            if (value) {
-                return value;
-            } else {
-                return key;
-            }
+        if (!self.fallbackDictionary) {
+            return key;
+        }
+        
+        NSString *value = self.fallbackDictionary[key];
+        if (value) {
+            return value;
         } else {
             return key;
         }
-
     }
-    
+
     return result;
 }
 
