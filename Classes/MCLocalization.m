@@ -159,14 +159,6 @@
         string = [(NSNumber *)lookupResult stringValue];
     }
 
-    if (!string) {
-        if (self.noKeyPlaceholder) {
-            string = self.noKeyPlaceholder;
-            string = [string stringByReplacingOccurrencesOfString:@"{key}" withString:key];
-            string = [string stringByReplacingOccurrencesOfString:@"{language}" withString:language];
-        }
-    }
-
     return string;
 }
 
@@ -174,7 +166,23 @@
 {
     NSString *result = [self stringForKey:key language:self.language];
     
-    if (!result) result = key;
+    if (!result) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"localization_default_string" ofType:@"json"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        if (data) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:  kNilOptions error:nil];
+            NSString *value = json[key];
+
+            if (value) {
+                return value;
+            } else {
+                return key;
+            }
+        } else {
+            return key;
+        }
+
+    }
     
     return result;
 }

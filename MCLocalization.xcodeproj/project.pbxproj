@@ -26,6 +26,7 @@
 		867AADD71A980E5F00094122 /* MCLocalizationDummyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AADD61A980E5F00094122 /* MCLocalizationDummyDataSource.m */; };
 		867AADDA1A981E7500094122 /* ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 867AADD81A981E7500094122 /* ru.json */; };
 		867AADDB1A981E7500094122 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 867AADD91A981E7500094122 /* en.json */; };
+		B78AF6D01F135CEF000ABDD6 /* localization_default_string.json in Resources */ = {isa = PBXBuildFile; fileRef = B78AF6CF1F135CEF000ABDD6 /* localization_default_string.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		867AADD61A980E5F00094122 /* MCLocalizationDummyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCLocalizationDummyDataSource.m; path = Classes/MCLocalizationDummyDataSource.m; sourceTree = "<group>"; };
 		867AADD81A981E7500094122 /* ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ru.json; sourceTree = "<group>"; };
 		867AADD91A981E7500094122 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
+		B78AF6CF1F135CEF000ABDD6 /* localization_default_string.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localization_default_string.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		8672268B16F1CC0D00CAC625 /* MCLocalization */ = {
 			isa = PBXGroup;
 			children = (
+				B78AF6CF1F135CEF000ABDD6 /* localization_default_string.json */,
 				867AADD81A981E7500094122 /* ru.json */,
 				867AADD91A981E7500094122 /* en.json */,
 				867226B216F229C600CAC625 /* strings.json */,
@@ -204,6 +207,7 @@
 				8672269016F1CC0D00CAC625 /* InfoPlist.strings in Resources */,
 				8672269816F1CC0D00CAC625 /* Default.png in Resources */,
 				8672269A16F1CC0D00CAC625 /* Default@2x.png in Resources */,
+				B78AF6D01F135CEF000ABDD6 /* localization_default_string.json in Resources */,
 				8672269C16F1CC0D00CAC625 /* Default-568h@2x.png in Resources */,
 				867226A216F1CC0D00CAC625 /* ViewController.xib in Resources */,
 				867226B116F21F9B00CAC625 /* README.md in Resources */,
