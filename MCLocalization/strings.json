@@ -12,5 +12,6 @@
         "glory": "Славься славься, %name%!",
         "mustache": "усы",
         "lovely-mustache": "Какие замечательные у Вас {{mustache}}!"
-    }
+    },
+    "greeting": "Hello"
 }
