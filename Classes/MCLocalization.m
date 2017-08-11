@@ -157,16 +157,17 @@
 
 - (NSString *)stringForKey:(NSString *)key language:(NSString *)language
 {
-    NSDictionary * langugeStrings = [self stringsForLanguage:language];
-    
-    NSObject * lookupResult = langugeStrings[key];
     NSString * string = nil;
-    if ([lookupResult isKindOfClass:NSString.class]) {
-        string = (NSString *)lookupResult;
-    } else if ([lookupResult isKindOfClass:NSNumber.class]) {
-        string = [(NSNumber *)lookupResult stringValue];
-    }
 
+    id languageStrings = [self stringsForLanguage:language];
+    if ([languageStrings isKindOfClass:[NSDictionary class]]) {
+        NSObject * lookupResult = languageStrings[key];
+        if ([lookupResult isKindOfClass:NSString.class]) {
+            string = (NSString *)lookupResult;
+        } else if ([lookupResult isKindOfClass:NSNumber.class]) {
+            string = [(NSNumber *)lookupResult stringValue];
+        }
+    }
     return string;
 }
 
